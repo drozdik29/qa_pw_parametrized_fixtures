@@ -50,6 +50,15 @@ export class ViewArticlePage {
     });
   }
 
+  async clickEditArticleButton() {
+    await this.step(`Click the 'Edit Article' button`, async () => {
+      await this.page
+        .getByRole('link', { name: 'Edit Article' })
+        .first()
+        .click();
+    });
+  }
+
   async assertArticleTagsAreVisible(tags) {
     await this.step(`Assert the article has correct tags`, async () => {
       for (let i = 0; i < tags.length; i++) {
