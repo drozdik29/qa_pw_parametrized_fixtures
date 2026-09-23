@@ -28,15 +28,15 @@ const testParameters = [
   },
 ];
 
-testParameters.forEach((testParameters) => {
-test.describe('Sign up negative tests', () => {
-    test(`Sign up with ${testParameters.title}`, async ({ user, signUpPage }) => {
+testParameters.forEach((params) => {
+  test.describe('Sign up negative tests', () => {
+    test(`Sign up with ${params.title}`, async ({ user, signUpPage }) => {
       await signUpPage.open();
-      await signUpPage.fillEmailField(testParameters.email);
-      await signUpPage.fillPasswordField(testParameters.password);
+      await signUpPage.fillEmailField(params.email);
+      await signUpPage.fillPasswordField(params.password);
       await signUpPage.clickSignUpButton();
 
-      await signUpPage.assertErrorMessageContainsText(testParameters.message);
+      await signUpPage.assertErrorMessageContainsText(params.message);
     });
   });
 });
